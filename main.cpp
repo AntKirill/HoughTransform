@@ -37,12 +37,12 @@ int main(int argc, char *argv[]) {
     points.emplace_back(Point<double> {x, y});
   }
 
-  HoughTransformer2d<double, double> transformer(0.1, 0.01);
+  HoughTransformer2d<double, double> transformer(0.01, 0.01);
   auto hs = transformer.transform(points);
   size_t m = 0;
   fin >> m;
   auto lines = hs.getLines(m);
-  auto space = hs.getSpace();
+//  auto space = hs.getSpace();
 
 //  cout << "HoughSpace: " << endl;
 //  for (auto vi : space) {
@@ -50,15 +50,22 @@ int main(int argc, char *argv[]) {
 //    cout << endl;
 //  }
 //  cout << endl;
+
   for (const auto &line : lines) {
     cout << line.r << " " << line.theta << endl;
-    for (const auto &p : points)
-      cout << hs.isOnLine(line, p) << endl;
+    size_t cnt = 0;
+    for (const auto &p : points) {
+      bool on =  hs.isOnLine(line, p);
+      if (on) ++cnt;
+      cout << on << endl;
+    }
+    assert(cnt == hs.get(line.r, line.theta));
   }
   cout << endl;
 
   cout << hs.get(lines[0].r, lines[0].theta) << endl;
 
   fin.close();
+
   return 0;
 }
