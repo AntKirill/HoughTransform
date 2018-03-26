@@ -155,7 +155,7 @@ private:
   friend HoughSpace<R_T, THETA_T> HoughTransformer2d<R_T, THETA_T>::transform(
     const std::vector<Point<R_T>> &) const;
 
-  void update(const R_T &r, const THETA_T &theta) {
+  void update(R_T r, THETA_T theta) {
     bool ok = true;
     size_t cell_theta = getCellComponent(theta, thetaStep, ok);
     if (!ok) return;
@@ -170,11 +170,13 @@ private:
   }
 
   void update(size_t rt, size_t thetat) {
+    #ifndef NDEBUG
     checkDist(rt, thetat);
+    #endif
     ++space[rt][thetat];
   }
 
-  void update(const R_T &r, size_t thetat) {
+  void update(R_T r, size_t thetat) {
     bool ok = true;
     size_t cell_r = getCellComponent(r, rStep, ok);
     if (!ok) return;

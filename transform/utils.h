@@ -11,10 +11,10 @@
 template <typename R_T, typename THETA_T>
 struct math_traits {
   static constexpr THETA_T pi() { return static_cast<THETA_T>(3.14159265359); }
-  static R_T sin(const THETA_T &v) { return static_cast<R_T>(std::sin(v)); }
-  static THETA_T arcsin(const R_T &v) { return static_cast<THETA_T>(std::asin(v)); }
-  static R_T sqrt(const R_T &v) { return static_cast<R_T>(std::sqrt(v)); }
-  static R_T cos(const THETA_T &v) { return static_cast<R_T>(std::cos(v)); }
+  static R_T sin(THETA_T v) { return static_cast<R_T>(std::sin(v)); }
+  static THETA_T arcsin(R_T v) { return static_cast<THETA_T>(std::asin(v)); }
+  static R_T sqrt(R_T v) { return static_cast<R_T>(std::sqrt(v)); }
+  static R_T cos(THETA_T v) { return static_cast<R_T>(std::cos(v)); }
 };
 
 template <typename T>
