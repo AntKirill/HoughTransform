@@ -17,4 +17,4 @@ install:
 
 script:
     - mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_TESTS=ON .. && make
-    - ctest --verbose
+    - travis_wait 100000 ctest --verbose
