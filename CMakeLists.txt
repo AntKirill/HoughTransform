@@ -12,7 +12,7 @@ if(BUILD_TESTS)
     add_test(testing tests/testing)
 endif(BUILD_TESTS)
 
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wextra -Werror")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wextra -Werror -g")
 add_executable(HoughTransform main.cpp)
 
 #target_link_libraries(HoughTransform transform)
